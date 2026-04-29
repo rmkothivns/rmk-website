@@ -790,7 +790,7 @@ export default function Home() {
                   <div className="inline-flex items-center gap-2 bg-white/15 backdrop-blur-sm border border-white/25 rounded-full px-4 py-1.5">
                     <Star className="w-3.5 h-3.5 fill-amber-300 text-amber-300" />
                     <span className="text-white/90 text-xs font-medium tracking-widest uppercase">
-                      Heritage Kothi • 5★ Guest Rated Stay
+                      Heritage Kothi • A Stay Guests Remember
                     </span>
                   </div>
                 </motion.div>
@@ -803,7 +803,7 @@ export default function Home() {
 
                 <motion.p variants={fadeUp} className="text-white/80 text-lg sm:text-xl font-light mb-8 leading-relaxed">
                   Heritage Haveli in the Heart of Varanasi
-                  <br className="hidden sm:block" />3 min walk from Kashi
+                  <br className="hidden sm:block" /> 3 min walk from Kashi
                   Vishwanath Temple
                 </motion.p>
 
@@ -1065,10 +1065,10 @@ export default function Home() {
                     place,
                     time,
                     type
-                  }, idx) => <motion.div key={place} data-ocid={`distances.item.${idx + 1}`} variants={fadeUp} className="bg-card rounded-2xl border border-border p-5 shadow-xs hover:shadow-md transition-shadow">
-                      <div className="flex items-start gap-3">
-                        <div className="w-9 h-9 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0 mt-0.5">
-                          <MapPin className="w-4 h-4 text-primary" />
+                  }, idx) => <motion.div key={place} data-ocid={`distances.item.${idx + 1}`} variants={fadeUp} className="bg-card rounded-2xl border border-border p-4 sm:p-5 shadow-xs hover:shadow-md transition-shadow">
+                      <div className="flex flex-col sm:flex-row items-start gap-3">
+                        <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+                          <MapPin className="w-4 h-4 sm:w-4 sm:h-4 text-primary" />
                         </div>
                         <div>
                           <p className="font-semibold text-foreground text-sm leading-snug">
