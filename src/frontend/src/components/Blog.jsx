@@ -592,77 +592,93 @@ export default function Blog() {
       opacity: 0
     }}>
       {/* Navigation */}
-      <header className="fixed top-0 left-0 right-0 z-50 bg-background/90 backdrop-blur-md border-b border-border">
-        <nav className="max-w-6xl mx-auto px-2 sm:px-6 h-[4.5rem] sm:h-[6.5rem] flex items-center justify-between">
-          {/* Logo */}
-          <button type="button" onClick={e => {
-            e.preventDefault();
-            handleNavClick("#hero");
-          }} className="flex items-center h-10 relative shrink-0">
-            <img src="/logo.png" alt="Logo" className="w-16 h-16 sm:w-32 sm:h-32 object-cover relative " />
+      <motion.header
+        initial={{ y: -100 }}
+        animate={{ y: 0 }}
+        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+        className="fixed top-0 left-0 w-full z-50 bg-white shadow-[0_10px_40px_rgba(0,0,0,0.04)] border-b border-black/5"
+      >
+        <nav className="max-w-[100rem] mx-auto px-6 sm:px-12 lg:px-20 h-[6.5rem] lg:h-[8.5rem] flex items-center justify-between">
 
-            <img src="/logo_2.png" alt="Logo_2" className="h-24 sm:h-52 w-auto object-contain relative right-14 sm:right-28 bottom-1 sm:bottom-2 " />
+          {/* Logo Area (Left) */}
+          <div className="flex-1 flex justify-start">
+            <button type="button" onClick={e => {
+              e.preventDefault();
+              handleNavClick("#hero");
+            }} className="relative shrink-0 block overflow-hidden">
+              <motion.img
+                whileHover={{ scale: 1.04 }}
+                transition={{ duration: 0.6, ease: "easeOut" }}
+                src="/Rudreshwar%20Mahadeo%20Kothi.png"
+                alt="Rudreshwar Mahadeo Kothi Logo"
+                className="h-20 lg:h-[7.5rem] w-auto object-contain origin-left"
+              />
+            </button>
+          </div>
 
-
-            {/* <span className="font-display font-semibold text-lg text-foreground tracking-tight leading-none">
-                  Rudreshwar
-                  <br />
-                  <span className="text-xs font-body font-medium text-muted-foreground tracking-widest uppercase">
-                    Mahadeo Kothi
-                  </span>
-                 </span> */}
-          </button>
-
-          {/* Desktop nav links */}
-          <ul className="hidden md:flex items-center gap-6">
-            {navLinks.map(link => <li key={link.href}>
-              <a href={link.href} data-ocid={`nav.${link.label.toLowerCase()}.link`} onClick={e => {
-                e.preventDefault();
-                handleNavClick(link.href);
-              }} className="text-sm font-medium text-muted-foreground hover:text-white transition-colors">
-                {link.label}
-              </a>
-            </li>)}
+          {/* Desktop Nav Links (Center) */}
+          <ul className="hidden lg:flex flex-1 items-center justify-center gap-10">
+            {navLinks.map((link, idx) => (
+              <motion.li
+                key={link.href}
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.3 + (idx * 0.1) }}
+              >
+                <a href={link.href} data-ocid={`nav.${link.label.toLowerCase()}.link`} onClick={e => {
+                  e.preventDefault();
+                  handleNavClick(link.href);
+                }} className="relative text-xs sm:text-sm uppercase tracking-[0.2em] font-semibold text-zinc-600 hover:text-black transition-colors py-2 group">
+                  {link.label}
+                  <span className="absolute left-0 -bottom-1 h-[2px] w-0 bg-primary transition-all duration-400 ease-out group-hover:w-full"></span>
+                </a>
+              </motion.li>
+            ))}
           </ul>
 
-          <div className="flex items-center gap-3">
-            <Button data-ocid="nav.book_button" onClick={() => window.open("https://live.ipms247.com/booking/book-rooms-rudreshwarmahadeokothibyvns", "_blank")} className="hidden sm:flex bg-primary text-primary-foreground hover:bg-primary/90 text-sm px-5 rounded-full">
-              Book Now
-            </Button>
-            <button type="button" className="md:hidden p-2 rounded-md text-foreground" onClick={() => setMobileMenuOpen(v => !v)} aria-label="Toggle menu">
-              {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+          {/* Action Area (Right) */}
+          <div className="flex-1 flex justify-end items-center gap-4">
+            <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: 0.8, duration: 0.5 }}>
+              <Button data-ocid="nav.book_button" onClick={() => window.open("https://live.ipms247.com/booking/book-rooms-rudreshwarmahadeokothibyvns", "_blank")} className="hidden sm:flex bg-primary text-white hover:bg-black hover:text-white transition-colors duration-500 text-xs sm:text-sm tracking-[0.15em] uppercase px-8 sm:px-10 py-6 sm:py-7 rounded-none font-semibold shadow-none">
+                Book Now
+              </Button>
+            </motion.div>
+            <button type="button" className="lg:hidden p-3 bg-zinc-50 hover:bg-zinc-100 transition-colors text-black border border-zinc-200" onClick={() => setMobileMenuOpen(v => !v)} aria-label="Toggle menu">
+              {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
           </div>
         </nav>
 
         {/* Mobile menu */}
         <AnimatePresence>
-          {mobileMenuOpen && <motion.div initial={{
-            height: 0,
-            opacity: 0
-          }} animate={{
-            height: "auto",
-            opacity: 1
-          }} exit={{
-            height: 0,
-            opacity: 0
-          }} transition={{
-            duration: 0.25
-          }} className="md:hidden overflow-hidden bg-background border-t border-border">
-            <div className="px-4 py-4 flex flex-col gap-3">
-              {navLinks.map(link => <a key={link.href} href={link.href} onClick={e => {
-                e.preventDefault();
-                handleNavClick(link.href);
-              }} className="py-2 text-base font-medium text-foreground border-b border-border/50 last:border-0">
-                {link.label}
-              </a>)}
-              <Button data-ocid="nav.book_button" onClick={() => window.open("https://live.ipms247.com/booking/book-rooms-rudreshwarmahadeokothibyvns", "_blank")} className="mt-2 bg-primary text-primary-foreground w-full rounded-full">
-                Book Now
-              </Button>
-            </div>
-          </motion.div>}
+          {mobileMenuOpen && (
+            <motion.div
+              initial={{ height: 0, opacity: 0 }}
+              animate={{ height: "auto", opacity: 1 }}
+              exit={{ height: 0, opacity: 0 }}
+              transition={{ duration: 0.3, ease: "easeInOut" }}
+              className="lg:hidden bg-white border-t border-zinc-100 overflow-hidden shadow-2xl absolute w-full left-0 top-full"
+            >
+              <div className="px-6 py-8 flex flex-col gap-4">
+                {navLinks.map(link => (
+                  <a key={link.href} href={link.href} onClick={e => {
+                    e.preventDefault();
+                    handleNavClick(link.href);
+                    setMobileMenuOpen(false);
+                  }} className="py-2 text-sm uppercase tracking-widest font-medium text-zinc-600 hover:text-black transition-colors">
+                    {link.label}
+                  </a>
+                ))}
+                <div className="pt-6 mt-2 border-t border-zinc-100">
+                  <Button data-ocid="nav.book_button" onClick={() => window.open("https://live.ipms247.com/booking/book-rooms-rudreshwarmahadeokothibyvns", "_blank")} className="bg-primary text-white w-full rounded-none py-7 font-semibold tracking-[0.1em] uppercase text-sm">
+                    Book Your Stay
+                  </Button>
+                </div>
+              </div>
+            </motion.div>
+          )}
         </AnimatePresence>
-      </header>
+      </motion.header>
 
       <div>
 
@@ -693,73 +709,103 @@ export default function Blog() {
 
 </main>
         {/* Footer */}
-        <footer className="bg-foreground text-primary-foreground py-14 px-4 sm:px-6 relative z-10">
-          <div className="max-w-5xl mx-auto">
-            <div className="grid sm:grid-cols-3 gap-10 mb-10">
-              {/* Brand */}
-              <div>
-                <div className="flex items-center h-10 relative mb-16 sm:mb-20 mt-4 sm:mt-8 right-0 sm:right-14  ">
-                  <img src="/logo.png" alt="Logo" className="w-20 h-20 sm:w-32 sm:h-32 object-cover relative " />
-                  <img src="/logo_2.png" alt="Logo_2" className="h-40 sm:h-60 w-auto object-cover relative right-16 sm:right-24 bottom-1 sm:bottom-2 " />
+        <footer className="footer-gradient bg-zinc-950 text-white pt-24 pb-12 px-4 sm:px-6 relative z-10 overflow-hidden">
+          {/* Ambient background glows - Optimised for Performance */}
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-px bg-gradient-to-r from-transparent via-primary/50 to-transparent" />
+          <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[1000px] h-[600px] bg-[radial-gradient(circle,rgba(139,35,35,0.15)_0%,transparent_60%)] rounded-full pointer-events-none transform translate-y-1/2" />
+
+          <div className="max-w-7xl mx-auto relative z-10">
+            <div className="grid lg:grid-cols-12 gap-12 lg:gap-8 mb-20">
+              {/* Brand & Newsletter */}
+              <div className="lg:col-span-5 space-y-8">
+                <div className="flex flex-col items-start">
+                  <div className="bg-white/95 px-6 py-4 rounded-xl shadow-lg border border-white/10 inline-block mb-2">
+                    <img src="/Rudreshwar%20Mahadeo%20Kothi.png" alt="Rudreshwar Mahadeo Kothi Logo" className="h-20 sm:h-40 w-auto object-cover" />
+                  </div>
                 </div>
-                <p className="text-sm text-primary-foreground/60 leading-relaxed relative bottom-6 sm:bottom-12 ">
-                  A 300-year-old heritage haveli managed by Mr. Dr V.N. Singh and Team Rudreshwar Kothi, in the
-                  heart of Varanasi.
+                <p className="text-zinc-400 leading-relaxed text-lg max-w-sm">
+                  A 300-year-old heritage haveli offering royal elegance and deep spirituality in the heart of ancient Varanasi.
                 </p>
+                <div className="pt-4">
+                  <p className="text-sm font-semibold uppercase tracking-widest text-zinc-500 mb-4">Subscribe for offers</p>
+                  <div className="flex bg-zinc-900 border border-zinc-800 rounded-full p-1.5 max-w-md focus-within:border-primary/50 transition-colors">
+                    <input type="email" placeholder="Email address" className="bg-transparent border-none text-white px-4 py-2 w-full text-sm focus:outline-none" />
+                    <Button className="rounded-full bg-primary text-primary-foreground hover:bg-primary/90 px-6">Join</Button>
+                  </div>
+                </div>
               </div>
 
-              {/* Contact */}
-              <div>
-                <h4 className="font-semibold text-sm uppercase tracking-widest text-primary-foreground/50 mb-4">
-                  Contact
-                </h4>
-                <ul className="space-y-3">
-                  <li className="flex items-start gap-2 text-sm text-primary-foreground/70">
-                    <MapPin className="w-4 h-4 mt-0.5 flex-shrink-0 text-primary-foreground/40" />
-                    CK-37/29, Bansphatak Road,
-                    <br />
-                    Varanasi 221001, UP, India
-                  </li>
-                  <li className="flex items-center gap-2 text-sm text-primary-foreground/70">
-                    <Phone className="w-4 h-4 flex-shrink-0 text-primary-foreground/40" />
-                    <a href="tel:+919335106436" className="hover:text-primary-foreground transition-colors">
-                      +91 9335106436
-                      <br />
-                      +91 9889244273
-                      <br />
-                      +91 7860597574
-                      <br />
-                      +91 9044301567
-                    </a>
-                  </li>
-                  <li className="flex items-center gap-2 text-sm text-primary-foreground/70">
-                    <Mail className="w-4 h-4 flex-shrink-0 text-primary-foreground/40" />
-                    <a href="mailto:rmkothivns@gmail.com" className="hover:text-primary-foreground transition-colors">
-                      rmkothivns@gmail.com
-                    </a>
-                  </li>
-                </ul>
-              </div>
+              {/* Navigation Group */}
+              <div className="lg:col-span-7 grid grid-cols-2 sm:grid-cols-3 gap-8">
+                {/* Contact */}
+                <div className="space-y-6">
+                  <h4 className="font-semibold text-sm uppercase tracking-widest text-zinc-100">Reach Us</h4>
+                  <ul className="space-y-4">
+                    <li>
+                      <a href="tel:+919335106436" className="group flex items-start gap-3 text-zinc-400 hover:text-white transition-colors">
+                        <div className="mt-1 p-2 bg-zinc-900 rounded-full group-hover:bg-primary/20 group-hover:text-primary transition-colors">
+                          <Phone className="w-4 h-4" />
+                        </div>
+                        <span className="text-sm leading-relaxed">
+                          +91 9335106436<br />
+                          +91 9889244273
+                        </span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="mailto:rmkothivns@gmail.com" className="group flex items-center gap-3 text-zinc-400 hover:text-white transition-colors">
+                        <div className="p-2 bg-zinc-900 rounded-full group-hover:bg-primary/20 group-hover:text-primary transition-colors">
+                          <Mail className="w-4 h-4" />
+                        </div>
+                        <span className="text-sm">rmkothivns@gmail.com</span>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
 
-              {/* Quick links */}
-              <div>
-                <h4 className="font-semibold text-sm uppercase tracking-widest text-primary-foreground/50 mb-4">
-                  Quick Links
-                </h4>
-                <ul className="space-y-2">
-                  {["About", "Rooms", "Amenities", "Gallery", "Reviews"].map(item => <li key={item}>
-                    <a href={`#${item.toLowerCase()}`} className="text-sm text-primary-foreground/60 hover:text-primary-foreground transition-colors">
-                      {item}
-                    </a>
-                  </li>)}
-                </ul>
+                {/* Location */}
+                <div className="space-y-6">
+                  <h4 className="font-semibold text-sm uppercase tracking-widest text-zinc-100">Location</h4>
+                  <div className="group flex items-start gap-3 text-zinc-400 hover:text-white transition-colors cursor-pointer">
+                    <div className="mt-1 p-2 bg-zinc-900 rounded-full group-hover:bg-primary/20 group-hover:text-primary transition-colors">
+                      <MapPin className="w-4 h-4" />
+                    </div>
+                    <span className="text-sm leading-relaxed">
+                      CK-37/29, Bansphatak Road,<br />
+                      Gate No.1 Near Pitambari Saree<br />
+                      Varanasi 221001, UP, India
+                    </span>
+                  </div>
+                </div>
+
+                {/* Links */}
+                <div className="space-y-6">
+                  <h4 className="font-semibold text-sm uppercase tracking-widest text-zinc-100">Quick Links</h4>
+                  <ul className="space-y-3">
+                    {["About", "Rooms", "Amenities", "Gallery", "Reviews", "Contact"].map(item => (
+                      <li key={item}>
+                        <a href={`#${item.toLowerCase()}`} onClick={e => {
+                          e.preventDefault();
+                          handleNavClick(`#${item.toLowerCase()}`);
+                        }} className="text-sm text-zinc-400 hover:text-primary hover:translate-x-1 inline-block transition-all cursor-pointer">
+                          {item}
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               </div>
             </div>
 
-            <div className="border-t border-primary-foreground/10 pt-6 text-center">
-              <p className="text-sm text-primary-foreground/40">
-                © 2026 Rudreshwar Mahadeo Kothi — A Heritage Property. All rights reserved.{" "}
+            {/* Bottom Bar */}
+            <div className="border-t border-zinc-800/80 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+              <p className="text-sm text-zinc-500 font-medium">
+                © {new Date().getFullYear()} Rudreshwar Mahadeo Kothi. All rights reserved. Managed by Dr V.N. Singh.
               </p>
+              <div className="flex items-center gap-6 text-sm text-zinc-500">
+                <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
+                <a href="#" className="hover:text-white transition-colors">Terms of Service</a>
+              </div>
             </div>
           </div>
         </footer>
