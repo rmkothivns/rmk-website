@@ -78,8 +78,12 @@ It’s something you feel.
 
 <h2 className="text-foreground font-display font-semibold mt-12 mb-5 text-3xl">Plan Your Stay at RM Kothi</h2>
 <p>If you’re looking for a stay that keeps you close to the river, the temple, and the spiritual rhythm of the city, <a href="https://rmkothi.com/">Rudraeshwar Mahadeo Kothi</a> offers an experience designed around the true essence of Varanasi.</p>
-<p>Book your stay today and discover Varanasi the way it’s meant to be experienced.
-</p>
+<a
+  href="https://live.ipms247.com/booking/book-rooms-rudreshwarmahadeokothibyvns"
+  class="inline-block mt-4 rounded-xl bg-primary px-6 py-3 text-white font-semibold shadow-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl hover:opacity-90 active:scale-95 no-underline"
+>
+  Book Your Stay Today
+</a>
       `,
   },
 
