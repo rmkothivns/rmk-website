@@ -13,6 +13,7 @@ const BlogGrid = () => {
           </div>
 
           <div className="blog-content">
+        <div className="date">Published on-{blog.date}</div>
             <h1><b>{blog.title}</b></h1>
             <p>{blog.desc}</p>
 
@@ -52,6 +53,9 @@ const BlogGrid = () => {
         .blog-content {
           padding: 20px;
         }
+          .date{
+          font-size: 12px;
+          }
         .read-btn {
           padding: 8px 16px;
           background:  oklch(var(--primary) / var(--tw-bg-opacity, 1));
