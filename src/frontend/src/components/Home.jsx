@@ -1303,8 +1303,8 @@ export default function Home() {
                   <div className="flex flex-wrap gap-3 justify-center">
                     <a href="tel:+919920685754" data-ocid="contact.call_button" className="inline-flex items-center gap-2 bg-secondary text-foreground hover:bg-secondary/80 border border-border rounded-full px-5 py-2.5 text-sm font-medium transition-colors">
                       <Phone className="w-4 h-4" />
-                      Call Us: +91 99206 85754
-                      +91 9889244273
+                      Call Us: +91 9335106436
+                      +91 9336708909
                       +91 9044301567
                     </a>
                     <a href="mailto:rmkothivns@gmail.com" data-ocid="contact.email_button" className="inline-flex items-center gap-2 bg-secondary text-foreground hover:bg-secondary/80 border border-border rounded-full px-5 py-2.5 text-sm font-medium transition-colors">
