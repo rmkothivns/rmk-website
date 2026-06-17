@@ -6,7 +6,7 @@ export const blogs = [
       description:"Stay at Rudreshwar Mahadeo Kothi, the best hotel in Varanasi near Kashi Vishwanath Temple and Ganga Ghats, offering comfort, hospitality, and convenience.",
       keywords: "best-hotel-in-varanasi",
     },
-    slug: "best-hotel-in-varanasi-near-ghats-&-kashi-vishwanath",
+    slug: "best-hotel-in-varanasi-near-ghats-kashi-vishwanath",
     title: "Best Hotel in Varanasi – Where Comfort Meets the Spirit of Banaras",
     desc: "Varanasi is one of the world's oldest living cities and a destination unlike any other. Every lane tells a story, every temple echoes centuries of devotion, and every sunrise over the River Ganga creates a memory that lasts forever. Whether you are visiting for a spiritual pilgrimage, family vacation, cultural exploration, or business trip, choosing the right accommodation is essential to making your journey truly enjoyable.",
     img: "/assets/generated/blog-34-cover.jpeg",
