@@ -722,7 +722,7 @@ export default function BlogDetails() {
             </div>
 
             <div className="rounded-3xl overflow-hidden mb-12 shadow-lg border border-border">
-              <img src={blog.img} alt="Ganga River Varanasi" className="w-full h-[400px] sm:h-[600px] object-cover" />
+              <img src={blog.img} alt="Ganga River Varanasi" className="w-full h-[400px] sm:h-[600px] " />
             </div>
 
             <article className="prose prose-lg dark:prose-invert prose-amber max-w-none text-muted-foreground"   dangerouslySetInnerHTML={{ __html: blog.content }}>
