@@ -516,7 +516,7 @@ export default function Blog() {
     href: "#contact",
     label: "Contact"
   }
-];
+  ];
   const handleNavClick = href => {
     if (href.startsWith("#")) {
       if (window.location.pathname !== "/") {
@@ -682,32 +682,32 @@ export default function Blog() {
 
       <div>
 
-      <main className="pt-24 sm:pt-32 pb-20 px-4 sm:px-6 relative z-10 bg-background">
-          
+        <main className="pt-24 sm:pt-32 pb-20 px-4 sm:px-6 relative z-10 bg-background">
 
 
-<section id="rooms" className="py-2 sm:py-2 px-4 sm:px-6 relative z-10">
-  <div className="max-w-6xl mx-auto">
-    <motion.div variants={stagger} initial="hidden" whileInView="visible">
-      
-      <motion.div className="text-center mb-14">
-        <p className="text-sm font-medium tracking-widest uppercase text-primary mb-3">
-          Latest
-        </p>
-        <h2 className="font-display text-4xl sm:text-5xl font-semibold text-foreground">
-          Blogs
-        </h2>
-      </motion.div>
 
-  <BlogGrid/>
+          <section id="rooms" className="py-2 sm:py-2 px-4 sm:px-6 relative z-10">
+            <div className="max-w-6xl mx-auto">
+              <motion.div variants={stagger} initial="hidden" whileInView="visible">
 
-    </motion.div>
-  </div>
-</section>
+                <motion.div className="text-center mb-14">
+                  <p className="text-sm font-medium tracking-widest uppercase text-primary mb-3">
+                    Latest
+                  </p>
+                  <h2 className="font-display text-4xl sm:text-5xl font-semibold text-foreground">
+                    Blogs
+                  </h2>
+                </motion.div>
+
+                <BlogGrid />
+
+              </motion.div>
+            </div>
+          </section>
 
           <div className="section-divider" />
 
-</main>
+        </main>
         {/* Footer */}
         <footer className="footer-gradient bg-zinc-950 text-white pt-24 pb-12 px-4 sm:px-6 relative z-10 overflow-hidden">
           {/* Ambient background glows - Optimised for Performance */}
@@ -748,7 +748,8 @@ export default function Blog() {
                         </div>
                         <span className="text-sm leading-relaxed">
                           +91 9335106436<br />
-                          +91 9889244273
+                          +91 7985411212<br />
+                          +91 9336708909
                         </span>
                       </a>
                     </li>
