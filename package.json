@@ -10,7 +10,7 @@
   "scripts": {
     "start": "cd src/frontend && npm install && npx vite --host",
     "dev": "cd src/frontend && npm install && npx vite --host",
-    "build": "npm run build --workspaces --if-present",
+    "build": "npm run build --workspaces --if-present && node -e \"const fs = require('fs'); fs.cpSync('src/frontend/dist', 'dist', { recursive: true });\"",
     "typecheck": "npm run typecheck --workspaces --if-present",
     "check": "npm run check --workspaces --if-present",
     "fix": "npm run fix --workspaces --if-present"
